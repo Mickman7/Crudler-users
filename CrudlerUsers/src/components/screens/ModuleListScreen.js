@@ -1,13 +1,15 @@
 import {LogBox, ScrollView, StyleSheet, Text } from 'react-native';
 import Screen from '../layout/Screens.js';
-import initialModules from '../../data/modules.js'
-import ModuleItem from '../../modules/ModuleItem.js'
+import initialModules from '../../data/modules.js';
+import ModuleItem from '../../modules/ModuleItem.js';
 import { useState } from 'react';
-import Icons from '../UI/Icons.js'
-import { Button, ButtonTray, uttonTray } from '../UI/Button.js'
+import Icons from '../UI/Icons.js';
+import { Button, ButtonTray } from '../UI/Button.js';
+
 
 
 // const modules = initialModules;
+
 
 
 
