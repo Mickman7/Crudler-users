@@ -37,13 +37,13 @@ const ModuleListScreen = ({navigation}) => {
     navigation.goBack();
   }
 
+  const handleAdd = (module) => setModules([...modules, module]);
+
+  
   const onModify = (module) => {
     handleModify(module);
     navigation.navigate("ModuleListScreen");
   }
-
-  const handleAdd = (module) => setModules([...modules, module]);
-
 
   const handleModify = (updatedModule) => setModules(
     modules.map((module) => (module.ModuleID === updatedModule.ModuleID) ? updatedModule : module)
@@ -58,7 +58,6 @@ const ModuleListScreen = ({navigation}) => {
       </ButtonTray>
       {
         modules.map((module) => (
-          // <ModuleItem module={module} onSelect={() => handleDelete(module)} />
           <ModuleItem key={module.ModuleID} module={module} onSelect={() => gotoViewScreen(module)} />
 
         ))

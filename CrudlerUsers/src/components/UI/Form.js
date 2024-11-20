@@ -1,5 +1,6 @@
 import { Text, View, StyleSheet,TextInput, ScrollView } from 'react-native';
 import { Picker } from '@react-native-picker/picker';
+import { SelectList } from "react-native-dropdown-select-list";
 import {Button, ButtonTray} from '../UI/Button';
 
 
@@ -33,23 +34,27 @@ const InputText = ({label, value, onChange}) => {
 }
 
 const InputSelect = ({label, prompt, options, value, onChange}) => {
+
+    const selectListData = options.map((option) => ({
+        key: option.value,
+        value: option.label,
+      }));
+
+
     return(
         <View style={styles.container}>
             <Text style={styles.itemLabel}>{label}</Text>
-            <Picker
-                mode='dropdown'
-                selectedValue={value}
-                onValueChange={onChange}
-                style={styles.itemPickerStyle}
+            <SelectList
+                setSelected={onChange}
+                data={selectListData}
+                placeholder={prompt}
+                defaultOption={selectListData.find((item) => item.key === value)}
+                boxStyles={styles.selectListBoxStyle}
+                dropdownStyles={styles.selectListDropdownStyle}
             >
-                <Picker.Item value={null} label={prompt} style={styles.itemPickerPromptStyle} />
-                {
-                    options.map((option, index) => (
-                    <Picker.Item key={index} value={option.value} label={option.label}/>
-                    ))
-                }
+                
 
-            </Picker>
+            </SelectList>
         </View>
 
     );
@@ -81,13 +86,18 @@ const styles = StyleSheet.create({
       borderWidth: 1,
       borderColor: 'lightgray',
     },
-    itemPickerStyle: {
+    selectListBoxStyle: {
         height: 50,
-        backgroundColor: 'whitesmoke'
+        backgroundColor: 'whitesmoke',
+        borderRadius: 7,
+        borderWidth: 1,
+        borderColor: "lightgrey",
+        paddingLeft: 10,
+        paddingTop: 15,
     },
-    itemPickerPromptStyle: {
-        color: 'gray',
+    selectListDropdownStyle: {
+        borderColor: 'lightgrey',
     },
   });
 
-export default Form
+export default Form;

@@ -15,14 +15,19 @@ const UserListScreen = ({navigation}) => {
   const gotoViewScreen = (user) => navigation.navigate('UserViewScreen', { user, onDelete, onModify });
   const gotoAddScreen = () => navigation.navigate('UserAddScreen', { onAdd });
 
-//   const handleDelete = (module) => {
-//     setModules(modules.filter((item) => item.ModuleID !== module.ModuleID));
-//     console.log('Deleted ModuleID:', module.ModuleID);
+  const handleDelete = (deletedUser) => {
     
-//   };
+    if (!user || !Array.isArray(user)) {
+        console.error('Users state is not an array or is undefined.');
+        return;
+      }
+    
+    setUser(user.filter((item) => item.UserID !== deletedUser.UserID));
+    console.log('Deleted UserID:', deletedUser.UserID);
+  };
 
-  const onDelete = (user) => {
-    handleDelete(user);
+  const onDelete = (deletedUser) => {
+    handleDelete(deletedUser);
     navigation.goBack();
   }
 
@@ -36,12 +41,12 @@ const UserListScreen = ({navigation}) => {
     navigation.navigate("UserListScreen");
   }
 
-//   const handleAdd = (module) => setModules([...modules, module]);
+  const handleAdd = (users) => setUser([...user, users]);
 
 
-//   const handleModify = (updatedModule) => setModules(
-//     modules.map((module) => (module.ModuleID === updatedModule.ModuleID) ? updatedModule : module)
-//   );
+  const handleModify = (updatedUsers) => setUser(
+    user.map((user) => (user.UserID === updatedUsers.UserID) ? updatedUsers : user)
+  );
 
 
   return (
@@ -53,7 +58,6 @@ const UserListScreen = ({navigation}) => {
       {
         user.map((user, index) => (
           <UserItem key={index} user={user} onSelect={() => gotoViewScreen(user)} />
-
         ))
       }
       </ScrollView>

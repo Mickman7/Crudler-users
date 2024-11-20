@@ -14,7 +14,7 @@ import ModuleModifyScreen from './src/components/screens/ModuleModifyScreen';
 import UserListScreen from './src/components/screens/UserListScreen';
 import UserAddScreen from './src/components/screens/UserAddScreen';
 import UserViewScreen from './src/components/screens/UserViewScreen';
-// import UserModifyScreen from './src/components/screens/UserModifyScreen';
+import UserModifyScreen from './src/components/screens/UserModifyScreen';
 
 
 const Stack = createNativeStackNavigator();
@@ -86,12 +86,12 @@ function UserStack() {
         component={UserViewScreen}
         options={{title: 'View Users'}}
       />
-{/* 
+
       <Stack.Screen
         name='UserModifyScreen'
         component={UserModifyScreen}
         options={{title: 'Modify Users'}}
-      />  */}
+      /> 
 
 
 
@@ -106,7 +106,7 @@ export default function App() {
   return (
     <NavigationContainer>
       <StatusBar style='light'/>
-      <Drawer.Navigator initialRouteName='Modules Crudler'>
+      <Drawer.Navigator initialRouteName='Module Crudler'>
         <Drawer.Screen name='Module Crudler' component={ModuleStack}/>
         <Drawer.Screen name='User Crudler' component={UserStack}/>
       </Drawer.Navigator>

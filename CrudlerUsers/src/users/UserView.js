@@ -24,7 +24,7 @@ const UserView = ({user, onDelete, onModify}) => {
       <Text style={styles.text}>Type: {user.UserType}</Text>
       <Text style={styles.text}>
         {user.UserEmail} <Text style={styles.dimText}>(Email)</Text>
-        </Text>
+      </Text>
     </View>
 
     <ButtonTray>
