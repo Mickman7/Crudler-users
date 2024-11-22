@@ -1,4 +1,4 @@
-import {LogBox, ScrollView, StyleSheet, Text } from 'react-native';
+import {LogBox, ScrollView, StyleSheet, Text, Vibration } from 'react-native';
 import Screen from '../layout/Screens.js';
 import initialModules from '../../data/modules.js';
 import ModuleItem from '../../modules/ModuleItem.js';
@@ -19,7 +19,10 @@ const ModuleListScreen = ({navigation}) => {
 
   
   const gotoViewScreen = (module) => navigation.navigate('ModuleViewScreen', { module, onDelete, onModify });
-  const gotoAddScreen = () => navigation.navigate('ModuleAddScreen', { onAdd });
+  const gotoAddScreen = () => {
+    Vibration.vibrate(),
+    navigation.navigate('ModuleAddScreen', { onAdd })
+  };
 
   const handleDelete = (module) => {
     setModules(modules.filter((item) => item.ModuleID !== module.ModuleID));

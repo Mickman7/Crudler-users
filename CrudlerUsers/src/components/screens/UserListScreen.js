@@ -1,4 +1,4 @@
-import {LogBox, ScrollView, StyleSheet, Text } from 'react-native';
+import {LogBox, ScrollView, StyleSheet, Text, Vibration } from 'react-native';
 import Screen from '../layout/Screens.js';
 import initialUsers from '../../data/users.js';
 import UserItem from '../../users/UserItem.js';
@@ -13,7 +13,10 @@ const UserListScreen = ({navigation}) => {
 
   
   const gotoViewScreen = (user) => navigation.navigate('UserViewScreen', { user, onDelete, onModify });
-  const gotoAddScreen = () => navigation.navigate('UserAddScreen', { onAdd });
+  const gotoAddScreen = () => {
+    Vibration.vibrate(),
+    navigation.navigate('UserAddScreen', { onAdd })
+  };
 
   const handleDelete = (deletedUser) => {
     

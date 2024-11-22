@@ -3,6 +3,7 @@ import { createDrawerNavigator } from '@react-navigation/drawer';
 import { StatusBar } from 'expo-status-bar';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import Profile from "./src/components/UI/Profile";
 
 //Module screens
 import ModuleListScreen  from './src/components/screens/ModuleListScreen';
@@ -107,6 +108,7 @@ export default function App() {
     <NavigationContainer>
       <StatusBar style='light'/>
       <Drawer.Navigator initialRouteName='Module Crudler'>
+        <Drawer.Screen name='Profile' initialParams={{name: 'Graeme Jones', dob: '21/01/1984', status: 'Staff', about: '#', current: 'Senior Lecturer'}} component={Profile}/>
         <Drawer.Screen name='Module Crudler' component={ModuleStack}/>
         <Drawer.Screen name='User Crudler' component={UserStack}/>
       </Drawer.Navigator>

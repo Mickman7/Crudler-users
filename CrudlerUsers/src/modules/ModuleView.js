@@ -1,5 +1,5 @@
 import React from 'react'
-import { Alert, StyleSheet, View, Text } from 'react-native';
+import { Alert, StyleSheet, View, Text,Vibration } from 'react-native';
 import FullWidthImage from 'react-native-fullwidth-image';
 import {Button, ButtonTray} from '../components/UI/Button';
 
@@ -7,11 +7,11 @@ import {Button, ButtonTray} from '../components/UI/Button';
 const ModuleView = ({module, onDelete, onModify}) => {
 
 
-    const requestDelete = () => Alert.alert(
+    const requestDelete = () => {Vibration.vibrate(), Alert.alert(
         'Delete Warning',
         `Are you sure you want to delete module ${module.ModuleCode} ${module.ModuleName}`,
         [{text: 'Cancel'}, {text: 'Delete', onPress: handleDelete}]
-    );
+    )};
 
     const handleDelete = () => onDelete(module);
 

@@ -48,7 +48,6 @@ const UserForm = ({originalUsers, onSubmit, onCancel}) => {
       submitLabel={submitLabel}
       submitIcon={submitIcon}
     >
-        <Text>{user.UserFirstname} {user.UserLastname}</Text>
 
         <Form.InputText 
         label='First Name'
