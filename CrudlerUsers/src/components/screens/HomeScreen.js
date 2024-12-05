@@ -9,7 +9,7 @@ const HomeScreen  = ({route}) => {
             <Text style={styles.title}>
                 {`Welcome ${name}!`}
             </Text>
-            <Text>This is an app that uses the CRUDL workflow for both modules and users. Feek free to explore.</Text>
+            <Text>This is an app that uses the CRUDL workflow for both modules and users. Feel free to explore.</Text>
         </View>
     );
 
